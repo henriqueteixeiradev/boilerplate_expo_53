@@ -1,13 +1,7 @@
 import { useEffect, useState } from "react";
 import { View, Text, ActivityIndicator } from "react-native";
-import { Tabs } from "expo-router";
-import { Provider as ReduxProvider } from "react-redux";
 import { StatusBar } from "expo-status-bar";
-import { TabBar } from "../src/components/TabBar";
-import { Modals } from "../src/views/Modals";
-import { AuthProvider } from "../src/contexts/AuthContext";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { store } from "../src/store";
 import NetInfo from "@react-native-community/netinfo";
 
 import {
@@ -30,7 +24,6 @@ export default function Layout() {
     Nunito_700Bold,
     Nunito_900Black,
   });
-
 
   useEffect(() => {
     if (hasLoadedFonts) {
@@ -66,15 +59,10 @@ export default function Layout() {
   }
 
   return (
-    <ReduxProvider store={store}>
-      <QueryClientProvider client={queryClient}>
-        <AuthProvider>
-          <View className="flex-1 bg-brand_white">
-            <StatusBar style="auto" />
-
-            <Modals />
-
-            <Tabs
+    <QueryClientProvider client={queryClient}>
+      <View className="flex-1 bg-brand_white">
+        <StatusBar style="auto" />
+        {/* <Tabs
               screenOptions={{
                 headerShown: false,
                 tabBarHideOnKeyboard: true,
@@ -83,11 +71,9 @@ export default function Layout() {
                 return <TabBar />;
               }}
             >
-              {/* Tabs.Screen components */}
-            </Tabs>
-          </View>
-        </AuthProvider>
-      </QueryClientProvider>
-    </ReduxProvider>
+              Tabs.Screen components
+            </Tabs> */}
+      </View>
+    </QueryClientProvider>
   );
 }

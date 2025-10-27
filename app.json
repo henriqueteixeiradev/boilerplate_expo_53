@@ -33,7 +33,7 @@
         "android.permission.RECORD_AUDIO"
       ],
       "package": "com.vivavolei.vivavolei",
-      "versionCode": 0
+      "versionCode": 1
     },
     "web": {
       "favicon": "./assets/favicon.png"
